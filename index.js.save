@@ -1,0 +1,29 @@
+const express = require('express')
+const request = require('request')
+const app = express()
+
+const options = {
+		url: 'https://api.particle.io/v1/devices',
+		method: 'GET',
+		headers: {
+		'Authentication':  'Bearer 68f46810c9f5b700182b80c96f844495747d561a'
+}
+		};
+
+app.get('/getHeartData', (req, res) => {
+  res.send(JSON.stringify({hBeat:"55", o2 : "0.9", temp : "23.1"}))
+})
+
+app.get('/getSPO2', (req, res) => {
+
+  
+	res.send(JSON.stringify({'reading' : 45}));
+})
+
+app.get('/getTemperature', (req, res) => {
+
+	res.send(JSON.stringify({"reading": 20}));
+})
+app.listen(3000, () => console.log('Server running on port 3000'))
+
+
